@@ -20,6 +20,11 @@
       --max-width: 1100px;
       --radius: 10px;
       --shadow-soft: 0 4px 18px rgba(0,0,0,0.08);
+
+      /* FAQ bubble rosa */
+      --faq-bubble-bg: #ffe3f1;
+      --faq-bubble-border: #ff80b5;
+      --faq-bubble-hover: #ffc6e5;
     }
 
     * {
@@ -60,7 +65,7 @@
       margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content:space-between;
       gap: 16px;
     }
 
@@ -315,25 +320,92 @@
       font-weight: 600;
     }
 
-    /* FAQ */
-    details {
-      border-radius: 8px;
-      border: 1px solid #e0e0e0;
-      padding: 8px 10px;
-      margin-bottom: 6px;
-      background: #fafcff;
+    /* FAQ A BOLLA ROSA */
+    .faq-bubbles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 10px;
     }
 
-    summary {
+    @media (max-width: 800px) {
+      .faq-bubbles {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    details.faq-bubble {
+      border-radius: 999px;
+      border: 1px solid var(--faq-bubble-border);
+      padding: 10px 14px;
+      background: var(--faq-bubble-bg);
+      box-shadow: 0 4px 12px rgba(255,128,181,0.25);
       cursor: pointer;
-      font-weight: 600;
-      color: var(--primary-dark);
-      font-size: 0.94rem;
+      transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        background-color 0.18s ease-out;
+      position: relative;
+      overflow: hidden;
     }
 
-    details p {
+    details.faq-bubble::before {
+      content: "";
+      position: absolute;
+      width: 120%;
+      height: 160%;
+      top: -40%;
+      left: -10%;
+      background: radial-gradient(circle at 0 0, rgba(255,255,255,0.7), transparent 55%);
+      opacity: 0.6;
+      pointer-events: none;
+      transition: transform 0.5s ease-out, opacity 0.3s ease-out;
+      transform: translate3d(0, 0, 0);
+    }
+
+    details.faq-bubble[open] {
+      border-radius: 18px;
+    }
+
+    details.faq-bubble:hover {
+      background-color: var(--faq-bubble-hover);
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 8px 18px rgba(255,128,181,0.35);
+    }
+
+    details.faq-bubble:hover::before {
+      transform: translate3d(6px, 6px, 0);
+      opacity: 0.8;
+    }
+
+    details.faq-bubble summary {
+      list-style: none;
+      font-weight: 600;
+      color: #8b0d55;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    details.faq-bubble summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.faq-bubble summary::after {
+      content: "+";
+      float: right;
+      font-weight: 700;
+      color: #b3146f;
+      transition: transform 0.18s ease-out;
+    }
+
+    details.faq-bubble[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    details.faq-bubble p {
       margin-top: 6px;
       font-size: 0.9rem;
+      color: #5d1638;
     }
 
     /* FOOTER */
@@ -720,44 +792,46 @@
       </p>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ A BOLLA ROSA -->
     <section id="faq">
       <h2>Domande frequenti (FAQ)</h2>
 
-      <details>
-        <summary>L'autismo si può “guarire”?</summary>
-        <p>
-          L'autismo non è una malattia da cui si guarisce, ma una diversa modalità di funzionamento del cervello: interventi mirati aiutano a sviluppare competenze e strategie, migliorando benessere e autonomia.[file:1][web:12]
-        </p>
-      </details>
+      <div class="faq-bubbles">
+        <details class="faq-bubble">
+          <summary>L'autismo si può “guarire”?</summary>
+          <p>
+            L'autismo non è una malattia da cui si guarisce, ma una diversa modalità di funzionamento del cervello: interventi mirati aiutano a sviluppare competenze e strategie, migliorando benessere e autonomia.[file:1][web:12]
+          </p>
+        </details>
 
-      <details>
-        <summary>È colpa dei genitori?</summary>
-        <p>
-          No: la ricerca scientifica ha escluso che l'autismo derivi da “mancanza di affetto” o da uno stile educativo freddo; i genitori sono invece risorse fondamentali nel percorso di crescita.[file:1][web:12]
-        </p>
-      </details>
+        <details class="faq-bubble">
+          <summary>È colpa dei genitori?</summary>
+          <p>
+            No: la ricerca scientifica ha escluso che l'autismo derivi da “mancanza di affetto” o da uno stile educativo freddo; i genitori sono invece risorse fondamentali nel percorso di crescita.[file:1][web:12]
+          </p>
+        </details>
 
-      <details>
-        <summary>Perché si parla di spettro autistico?</summary>
-        <p>
-          Perché le caratteristiche e i bisogni variano moltissimo da persona a persona: alcune hanno un alto livello di autonomia, altre necessitano di supporti intensivi e continui.[file:1][web:12]
-        </p>
-      </details>
+        <details class="faq-bubble">
+          <summary>Perché si parla di spettro autistico?</summary>
+          <p>
+            Perché le caratteristiche e i bisogni variano moltissimo da persona a persona: alcune hanno un alto livello di autonomia, altre necessitano di supporti intensivi e continui.[file:1][web:12]
+          </p>
+        </details>
 
-      <details>
-        <summary>Come posso rendere la mia classe più inclusiva?</summary>
-        <p>
-          Può aiutare strutturare la giornata con orari chiari, usare supporti visivi, ridurre i rumori quando possibile, spiegare per tempo i cambiamenti e valorizzare gli interessi dello studente autistico.[file:1][web:8][web:13]
-        </p>
-      </details>
+        <details class="faq-bubble">
+          <summary>Come posso rendere la mia classe più inclusiva?</summary>
+          <p>
+            Può aiutare strutturare la giornata con orari chiari, usare supporti visivi, ridurre i rumori quando possibile, spiegare per tempo i cambiamenti e valorizzare gli interessi dello studente autistico.[file:1][web:8][web:13]
+          </p>
+        </details>
 
-      <details>
-        <summary>Sono un adulto e mi riconosco in molte descrizioni: cosa posso fare?</summary>
-        <p>
-          Puoi parlare con il medico di base o con uno psicologo/psichiatra esperto di neurodivergenza per valutare l'opportunità di un percorso diagnostico e di eventuali gruppi di psicoeducazione per adulti autistici.[web:7][web:11]
-        </p>
-      </details>
+        <details class="faq-bubble">
+          <summary>Sono un adulto e mi riconosco in molte descrizioni: cosa posso fare?</summary>
+          <p>
+            Puoi parlare con il medico di base o con uno psicologo/psichiatra esperto di neurodivergenza per valutare l'opportunità di un percorso diagnostico e di eventuali gruppi di psicoeducazione per adulti autistici.[web:7][web:11]
+          </p>
+        </details>
+      </div>
     </section>
 
   </main>
