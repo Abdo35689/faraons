@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autismo - Informazioni e Supporto</title>
+  <meta name="description" content="Sito informativo sull'autismo: definizione, segnali precoci, diagnosi, interventi educativi, punti di forza e risorse di supporto in Italia." />
+
+  <!-- STILE BASE -->
+  <style>
+    :root {
+      --primary: #0d47a1;
+      --primary-light: #1976d2;
+      --primary-dark: #002171;
+      --accent: #ffb300;
+      --bg: #f4f7fb;
+      --text: #1b1b1b;
+      --text-soft: #555555;
+      --white: #ffffff;
+      --max-width: 1100px;
+      --radius: 10px;
+      --shadow-soft: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* HEADER / NAVBAR */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: var(--white);
+      padding: 14px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.92rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo span.icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.14);
+      text-decoration: none;
+    }
+
+    /* HERO */
+    .hero {
+      max-width: var(--max-width);
+      margin: 26px auto 18px;
+      padding: 22px 20px 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero-left h1 {
+      font-size: clamp(1.9rem, 3vw, 2.3rem);
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .hero-left p {
+      color: var(--text-soft);
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(25,118,210,0.08);
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease, color 0.12s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #1a1300;
+      box-shadow: 0 3px 14px rgba(0,0,0,0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 16px rgba(0,0,0,0.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.5);
+      color: var(--primary-dark);
+      background: #e3f2fd;
+    }
+
+    .btn-outline:hover {
+      background: #bbdefb;
+      transform: translateY(-1px);
+    }
+
+    .hero-right {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow-soft);
+      border-left: 4px solid var(--primary-light);
+    }
+
+    .hero-right h2 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+    }
+
+    .hero-right p {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .check-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+    }
+
+    .check-list li {
+      margin-bottom: 6px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .check-list span.icon {
+      color: var(--primary-light);
+      margin-top: 2px;
+    }
+
+    /* LAYOUT CONTENUTO */
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto 40px;
+      padding: 0 20px 40px;
+    }
+
+    section {
+      margin-bottom: 26px;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 18px 18px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    section h2 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+    }
+
+    section h3 {
+      font-size: 1.02rem;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      color: var(--primary);
+    }
+
+    section p {
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      margin-bottom: 7px;
+    }
+
+    ul {
+      margin-left: 16px;
+      margin-bottom: 8px;
+      font-size: 0.94rem;
+      color: var(--text-soft);
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .muted {
+      font-size: 0.82rem;
+      color: #777777;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: #e3f2fd;
+      color: var(--primary-dark);
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+
+    .grid-two {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 6px;
+    }
+
+    /* TABELLA */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 7px 6px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #e3f2fd;
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+
+    /* FAQ */
+    details {
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+      background: #fafcff;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--primary-dark);
+      font-size: 0.94rem;
+    }
+
+    details p {
+      margin-top: 6px;
+      font-size: 0.9rem;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #0b1b3b;
+      color: #dbe3ff;
+      padding: 14px 20px 18px;
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: #e3f2fd;
+      font-size: 0.85rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .grid-two {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAV -->
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <span class="icon">💙</span>
+        <span>Autismo – Conoscere e Supportare</span>
+      </div>
+      <div class="nav-links">
+        <a href="#cos-e">Che cos'è</a>
+        <a href="#segnali-precoci">Segnali precoci</a>
+        <a href="#diagnosi">Diagnosi</a>
+        <a href="#interventi">Interventi</a>
+        <a href="#punti-forza">Punti di forza</a>
+        <a href="#famiglia">Famiglia</a>
+        <a href="#risorse">Risorse</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-left">
+      <h1>Autismo: comprendere lo spettro e costruire inclusione</h1>
+      <p>
+        L'autismo è una condizione del neurosviluppo che influenza il modo di comunicare, relazionarsi e percepire il mondo, con un'ampia variabilità tra le persone.[file:1][web:9]
+      </p>
+      <div class="hero-tags">
+        <span class="tag">Informazioni scientifiche</span>
+        <span class="tag">Segnali precoci</span>
+        <span class="tag">Interventi educativi</span>
+        <span class="tag">Risorse in Italia</span>
+      </div>
+      <div class="hero-cta">
+        <button class="btn-primary" onclick="scrollToSection('segnali-precoci')">
+          Riconosci i primi segnali
+        </button>
+        <button class="btn-outline" onclick="scrollToSection('risorse')">
+          Trova risorse di supporto
+        </button>
+      </div>
+    </div>
+    <aside class="hero-right">
+      <h2>Messaggio importante</h2>
+      <p>
+        L'autismo non è colpa dei genitori, non è dovuto a mancanza di affetto e non “passa” con la crescita: un intervento precoce e personalizzato può migliorare molto la qualità di vita.[file:1]
+      </p>
+      <ul class="check-list">
+        <li><span class="icon">✔</span><span>Approccio basato su evidenze scientifiche e rispetto della neurodiversità.[file:1][web:12]</span></li>
+        <li><span class="icon">✔</span><span>Valorizzazione dei punti di forza, non solo delle difficoltà.[file:1][web:7]</span></li>
+        <li><span class="icon">✔</span><span>Informazioni utili per famiglie, insegnanti, operatori e persone autistiche.[file:1][web:10]</span></li>
+      </ul>
+    </aside>
+  </section>
+
+  <main>
+
+    <!-- COS'È L'AUTISMO -->
+    <section id="cos-e">
+      <h2>Che cos'è l'autismo</h2>
+      <p>
+        L'autismo (Disturbo dello Spettro Autistico, ASD) è un disturbo del neurosviluppo caratterizzato da difficoltà nelle interazioni sociali e nella comunicazione, e da comportamenti o interessi ristretti e ripetitivi.[file:1][web:9]
+      </p>
+      <p>
+        Si parla di spettro perché esiste una grande variabilità nelle abilità cognitive, linguistiche e adattive: alcune persone hanno bisogno di supporto intensivo, altre sono autonome ma possono incontrare difficoltà in contesti sociali complessi.[file:1][web:12]
+      </p>
+
+      <div class="grid-two">
+        <div>
+          <h3>Caratteristiche principali (DSM‑5)</h3>
+          <ul>
+            <li>Difficoltà nella reciprocità socio‑emotiva (es. conversazioni a due, condivisione di interessi).[file:1][web:2]</li>
+            <li>Difficoltà nella comunicazione non verbale (contatto oculare, gesti, espressioni).[file:1][web:9]</li>
+            <li>Difficoltà nello sviluppare e mantenere relazioni adeguate all'età.[file:1][web:9]</li>
+            <li>Comportamenti e interessi ripetitivi o ristretti, bisogno di routine, rigidità.[file:1][web:2]</li>
+            <li>Particolare sensibilità o insensibilità agli stimoli sensoriali (suoni, luci, tatto, odori).[file:1][web:12]</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Cause e fattori di rischio</h3>
+          <ul>
+            <li>Origine multifattoriale: predisposizione genetica e fattori ambientali che agiscono sul neurosviluppo.[file:1][web:12]</li>
+            <li>Aumento del rischio con l'età avanzata dei genitori, in particolare paterna.[file:1]</li>
+            <li>Non esiste un “gene dell'autismo” singolo, ma molte varianti genetiche che interagiscono tra loro.[file:1][web:12]</li>
+            <li>Nessuna prova a favore del ruolo dei vaccini o del “freddo affetto” genitoriale.[file:1][web:4]</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="muted">
+        Queste informazioni non sostituiscono una valutazione clinica: per dubbi su un bambino o un adulto è sempre necessario rivolgersi ai servizi di neuropsichiatria infantile o ai centri specialistici.[file:1][web:4][web:11]
+      </p>
+    </section>
+
+    <!-- SEGNALI PRECOCI -->
+    <section id="segnali-precoci">
+      <h2>Segnali precoci per fascia di età</h2>
+      <p>
+        Riconoscere i segnali precoci permette di avviare interventi efficaci già nei primi anni di vita, migliorando la prognosi a lungo termine.[file:1][web:4]
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Età</th>
+            <th>Segnali possibili</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0 – 6 mesi[file:1]</td>
+            <td>
+              Bambino insolitamente tranquillo, pianti rari, poca risposta alla voce dei genitori, scarso contatto oculare, assenza di sorriso sociale entro il 3° mese.[file:1]
+            </td>
+          </tr>
+          <tr>
+            <td>6 – 12 mesi[file:1]</td>
+            <td>
+              Mancata angoscia verso gli estranei, poco interesse per gli altri, assenza di lallazione e gesti comunicativi (es. non tende le braccia per essere preso).[file:1]
+            </td>
+          </tr>
+          <tr>
+            <td>12 – 24 mesi[file:1]</td>
+            <td>
+              Mancanza di indicazione col dito per mostrare qualcosa (pointing), stereotipie motorie (camminare sulle punte, dondolarsi), scarso uso del linguaggio o regressione delle parole acquisite.[file:1]
+            </td>
+          </tr>
+          <tr>
+            <td>Oltre i 24 mesi[file:1][web:4]</td>
+            <td>
+              Difficoltà nel gioco simbolico, uso atipico dei giochi (allineare, far ruotare), resistenza ai cambiamenti, interessi ristretti, risposte inusuali ai rumori o al contatto fisico.[file:1][web:4]
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="muted">
+        La presenza di uno o più segnali non significa automaticamente autismo, ma è un motivo valido per una valutazione specialistica.[file:1][web:4]
+      </p>
+    </section>
+
+    <!-- DIAGNOSI -->
+    <section id="diagnosi">
+      <h2>Diagnosi di disturbo dello spettro autistico</h2>
+      <p>
+        La diagnosi è clinica e si basa sull'osservazione del comportamento e sulla raccolta accurata della storia di sviluppo, non su un singolo esame del sangue o strumentale.[file:1][web:9]
+      </p>
+
+      <div class="grid-two">
+        <div>
+          <h3>Processo di valutazione</h3>
+          <ul>
+            <li>Colloqui con i genitori o la persona adulta per raccogliere l'anamnesi.[file:1][web:4]</li>
+            <li>Osservazione strutturata del comportamento e delle interazioni sociali.[file:1][web:4]</li>
+            <li>Valutazioni dello sviluppo cognitivo, linguistico e adattivo.[file:1][web:9]</li>
+            <li>Esami di approfondimento (es. udito, esami genetici, EEG) quando indicato.[file:1][web:4]</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Dove rivolgersi (Italia)</h3>
+          <ul>
+            <li>Unità di Neuropsichiatria dell'Infanzia e Adolescenza (NPIA) delle ASL.[web:8][web:11]</li>
+            <li>Centri di riabilitazione e servizi dedicati ai disturbi del neurosviluppo.[file:1][web:8]</li>
+            <li>Centri e associazioni specializzate in autismo che offrono valutazione e presa in carico.[web:8][web:11]</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="muted">
+        Per adulti che sospettano un'autismo non riconosciuto, sono sempre più disponibili percorsi diagnostici specifici presso servizi pubblici e centri privati accreditati.[web:7][web:11]
+      </p>
+    </section>
+
+    <!-- INTERVENTI -->
+    <section id="interventi">
+      <h2>Interventi, scuola e vita quotidiana</h2>
+      <p>
+        Non esiste una “cura” che faccia scomparire l'autismo, ma interventi educativi, riabilitativi e ambientali possono sostenere lo sviluppo delle competenze e l'autonomia.[file:1][web:11]
+      </p>
+
+      <h3>Principi generali di un buon intervento</h3>
+      <ul>
+        <li>Intervento precoce e intensivo, fin dai primi anni di vita quando possibile.[file:1][web:4]</li>
+        <li>Programma personalizzato cucito sulle caratteristiche e interessi della persona.[file:1][web:11]</li>
+        <li>Coinvolgimento attivo della famiglia e collaborazione con la scuola e i servizi.[file:1][web:10]</li>
+        <li>Uso di strategie di matrice cognitivo‑comportamentale e supporti visivi.[file:1][web:13]</li>
+        <li>Verifiche periodiche e adattamento degli obiettivi nel tempo.[file:1][web:10]</li>
+      </ul>
+
+      <div class="grid-two">
+        <div>
+          <h3>Ambiti di intervento</h3>
+          <span class="pill">Psicomotricità</span>
+          <span class="pill">Logopedia</span>
+          <span class="pill">Terapia occupazionale</span>
+          <span class="pill">Supporto scolastico</span>
+          <ul>
+            <li>Potenziare comunicazione, autonomie personali e abilità sociali.[file:1][web:11]</li>
+            <li>Gestire comportamenti problematici con strategie non punitive.[file:1][web:11]</li>
+            <li>Favorire la generalizzazione delle competenze in casa, scuola e comunità.[file:1][web:10]</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Scuola e inclusione</h3>
+          <ul>
+            <li>Piano Educativo Individualizzato (PEI) costruito da un'équipe multidisciplinare.[file:1][web:8]</li>
+            <li>Supporto di insegnante di sostegno e uso di strumenti compensativi.[file:1][web:8]</li>
+            <li>Formazione degli insegnanti e collaborazione con i Centri Territoriali di Supporto (CTS).[web:8][web:14]</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="muted">
+        In Italia sono diffusi interventi comportamentali strutturati e programmi psicoeducativi che integrano lavoro individuale, piccolo gruppo e supporto alla famiglia.[file:1][web:8][web:11]
+      </p>
+    </section>
+
+    <!-- PUNTI DI FORZA -->
+    <section id="punti-forza">
+      <h2>Punti di forza e “isole di abilità”</h2>
+      <p>
+        Molte persone autistiche mostrano punti di forza specifici, come memoria visiva, attenzione ai dettagli, capacità di seguire routine e interesse profondo per particolari argomenti.[file:1][web:7]
+      </p>
+
+      <div class="grid-two">
+        <div>
+          <h3>Esempi di punti di forza</h3>
+          <ul>
+            <li>Pensiero visivo molto sviluppato: immagini e schemi più chiari delle parole.[file:1]</li>
+            <li>Precisione e cura dei dettagli in attività strutturate.[file:1]</li>
+            <li>Memoria eccellente per date, luoghi, percorsi, sequenze.[file:1]</li>
+            <li>Abilità specifiche in musica, arte, informatica, matematica.[file:1]</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Perché è importante valorizzarli</h3>
+          <ul>
+            <li>Aumentano autostima e motivazione nella persona autistica.[file:1][web:7]</li>
+            <li>Possono diventare risorse per la scuola, il lavoro e il tempo libero.[file:1][web:10]</li>
+            <li>Aiutano a contrastare lo stigma e la visione solo “deficitaria” dell'autismo.[file:1][web:7]</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="muted">
+        Una frase spesso citata è attribuita ad Albert Einstein: “Ognuno è un genio. Ma se si giudica un pesce dalla sua abilità di arrampicarsi sugli alberi, lui passerà tutta la sua vita a credersi stupido”.[file:1]
+      </p>
+    </section>
+
+    <!-- FAMIGLIA -->
+    <section id="famiglia">
+      <h2>Famiglia, emozioni e adattamento</h2>
+      <p>
+        La diagnosi di autismo coinvolge l'intero sistema familiare, che attraversa fasi di crisi, adattamento, pianificazione e attivismo, spesso in modo ciclico nel tempo.[file:1][web:10]
+      </p>
+
+      <div class="grid-two">
+        <div>
+          <h3>Bisogni della famiglia</h3>
+          <ul>
+            <li>Informazioni chiare e realistiche, ma non catastrofiche.[file:1][web:7]</li>
+            <li>Spazi per condividere emozioni (paura, rabbia, senso di colpa, speranza).[file:1][web:10]</li>
+            <li>Sostegno nell'orientarsi tra servizi sanitari, sociali e scolastici.[file:1][web:8]</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Cosa può aiutare</h3>
+          <ul>
+            <li>Gruppi di supporto con altre famiglie e associazioni.[file:1][web:8]</li>
+            <li>Percorsi di psicoeducazione che spiegano l'autismo e le strategie quotidiane.[web:7][web:13]</li>
+            <li>Collaborazione costante con terapisti, insegnanti e operatori.[file:1][web:11]</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="muted">
+        Una delle richieste più forti delle famiglie è sentirsi ascoltate e coinvolte come partner alla pari nella costruzione dei progetti per i propri figli.[file:1][web:7]
+      </p>
+    </section>
+
+    <!-- FALSI MITI -->
+    <section id="falsi-miti">
+      <h2>Falsi miti da superare</h2>
+      <p>
+        Molte idee sull'autismo sono ancora influenzate da pregiudizi e informazioni scorrette: è fondamentale riconoscerle e sostituirle con conoscenze fondate.[file:1][web:13]
+      </p>
+      <ul>
+        <li>“L'autismo è causato dal poco affetto dei genitori” → falso: è una condizione del neurosviluppo con forte componente biologica e genetica.[file:1][web:12]</li>
+        <li>“L'autismo è colpa dei vaccini o dei metalli pesanti” → gli studi non supportano questa ipotesi.[file:1][web:4]</li>
+        <li>“I bambini con autismo hanno solo bisogno di farmaci” → non esiste un farmaco che curi l'autismo, servono interventi educativi e ambientali.[file:1][web:11]</li>
+        <li>“L'autismo passa crescendo” → la condizione resta, ma il profilo può cambiare molto con interventi adeguati e supporti nel tempo.[file:1][web:10]</li>
+      </ul>
+    </section>
+
+    <!-- RISORSE -->
+    <section id="risorse">
+      <h2>Risorse e servizi</h2>
+      <p>
+        In Italia l'autismo è al centro di una crescente attenzione, con servizi sanitari, scolastici e associazioni che offrono supporto alle persone autistiche e alle loro famiglie.[web:8][web:11]
+      </p>
+
+      <div class="grid-two">
+        <div>
+          <h3>Servizi sanitari e riabilitativi</h3>
+          <ul>
+            <li>Unità territoriali di Neuropsichiatria Infantile e servizi per adulti con disturbi del neurosviluppo.[web:8][web:11]</li>
+            <li>Centri di riabilitazione accreditati che integrano logopedia, psicomotricità, terapia occupazionale.[file:1][web:8]</li>
+            <li>Programmi di intervento personalizzato con équipe multidisciplinari.[file:1][web:11]</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Cosa puoi fare subito</h3>
+          <ul>
+            <li>Se hai dubbi su un bambino, parlane con il pediatra e chiedi un invio alla NPIA.[file:1][web:4]</li>
+            <li>Per un adulto, informa il medico di base e chiedi informazioni sui percorsi diagnostici per ASD.[web:7][web:11]</li>
+            <li>Contatta le associazioni locali per gruppi di sostegno, sportelli di ascolto, attività inclusive.[file:1][web:8]</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="muted">
+        Le risorse disponibili e le modalità di accesso possono variare tra regioni e territori: informarsi presso la propria ASL e le associazioni è spesso il primo passo concreto.[web:8][web:14]
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2>Domande frequenti (FAQ)</h2>
+
+      <details>
+        <summary>L'autismo si può “guarire”?</summary>
+        <p>
+          L'autismo non è una malattia da cui si guarisce, ma una diversa modalità di funzionamento del cervello: interventi mirati aiutano a sviluppare competenze e strategie, migliorando benessere e autonomia.[file:1][web:12]
+        </p>
+      </details>
+
+      <details>
+        <summary>È colpa dei genitori?</summary>
+        <p>
+          No: la ricerca scientifica ha escluso che l'autismo derivi da “mancanza di affetto” o da uno stile educativo freddo; i genitori sono invece risorse fondamentali nel percorso di crescita.[file:1][web:12]
+        </p>
+      </details>
+
+      <details>
+        <summary>Perché si parla di spettro autistico?</summary>
+        <p>
+          Perché le caratteristiche e i bisogni variano moltissimo da persona a persona: alcune hanno un alto livello di autonomia, altre necessitano di supporti intensivi e continui.[file:1][web:12]
+        </p>
+      </details>
+
+      <details>
+        <summary>Come posso rendere la mia classe più inclusiva?</summary>
+        <p>
+          Può aiutare strutturare la giornata con orari chiari, usare supporti visivi, ridurre i rumori quando possibile, spiegare per tempo i cambiamenti e valorizzare gli interessi dello studente autistico.[file:1][web:8][web:13]
+        </p>
+      </details>
+
+      <details>
+        <summary>Sono un adulto e mi riconosco in molte descrizioni: cosa posso fare?</summary>
+        <p>
+          Puoi parlare con il medico di base o con uno psicologo/psichiatra esperto di neurodivergenza per valutare l'opportunità di un percorso diagnostico e di eventuali gruppi di psicoeducazione per adulti autistici.[web:7][web:11]
+        </p>
+      </details>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        Questo sito ha scopo informativo e non sostituisce una valutazione clinica o un consulto specialistico.[file:1][web:4]
+      </div>
+      <div class="footer-links">
+        <span>Fonti principali:&nbsp;</span>
+        <a href="https://www.cdc.gov/autism" target="_blank" rel="noopener noreferrer">CDC – Autism Spectrum Disorder</a>
+        <span>·</span>
+        <a href="https://www.autism.org.uk" target="_blank" rel="noopener noreferrer">National Autistic Society</a>
+        <span>·</span>
+        <a href="https://www.autismspeaks.org" target="_blank" rel="noopener noreferrer">Autism Speaks</a>
+      </div>
+      <div class="muted">
+        Testi ispirati al materiale didattico del Dr. Beniamino Saulle e a linee guida internazionali sul disturbo dello spettro autistico.[file:1][web:2][web:9]
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT: SCROLL MORBIDO -->
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - 70;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
